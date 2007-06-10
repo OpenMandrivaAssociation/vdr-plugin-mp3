@@ -3,7 +3,7 @@
 %define name	vdr-plugin-%plugin
 %define version	0.9.15
 %define prever	0
-%define rel	3
+%define rel	4
 %if %prever
 %define release	%mkrel 0.%prever.%rel
 %else
@@ -22,6 +22,7 @@ Source:		http://www.muempf.de/down/vdr-%plugin-%version%prever.tar.bz2
 %else
 Source:		http://www.muempf.de/down/vdr-%plugin-%version.tar.bz2
 %endif
+Patch:		mp3-closefd2.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.4.1-6
 BuildRequires:	libmad-devel libid3tag-devel libsndfile-devel libvorbis-devel
@@ -47,6 +48,8 @@ files.
 %setup -q -n %plugin-%version
 %endif
 chmod +x examples/*.sh.*
+
+%patch -p0
 
 %vdr_plugin_params_begin mp3
 # use CMD to mount/unmount/eject mp3 sources
