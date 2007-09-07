@@ -1,7 +1,7 @@
 
 %define plugin	mp3
 %define name	vdr-plugin-%plugin
-%define version	0.10.0
+%define version	0.10.1
 %define prever	0
 %define rel	1
 %if %prever
@@ -47,6 +47,9 @@ files.
 %setup -q -n %plugin-%version
 %endif
 chmod +x examples/*.sh.*
+
+# disable VDR1.5 i18n generation, detection fails without vdr source
+perl -pi -e 's,ALL \+= i18n.*$,,' Makefile
 
 %vdr_plugin_params_begin mp3
 # use CMD to mount/unmount/eject mp3 sources
