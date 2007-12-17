@@ -22,7 +22,6 @@ Source:		http://www.muempf.de/down/vdr-%plugin-%version%prever.tar.gz
 %else
 Source:		http://www.muempf.de/down/vdr-%plugin-%version.tar.gz
 %endif
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.4.1-6
 BuildRequires:	libmad-devel libid3tag-devel libsndfile-devel libvorbis-devel
 Requires:	vdr-abi = %vdr_abi
