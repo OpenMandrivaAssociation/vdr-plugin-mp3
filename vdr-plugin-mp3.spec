@@ -3,7 +3,7 @@
 %define name	vdr-plugin-%plugin
 %define version	0.10.1
 %define prever	0
-%define rel	2
+%define rel	3
 %if %prever
 %define release	%mkrel 0.%prever.%rel
 %else
