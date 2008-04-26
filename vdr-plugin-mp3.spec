@@ -3,7 +3,7 @@
 %define name	vdr-plugin-%plugin
 %define version	0.10.1
 %define prever	0
-%define rel	3
+%define rel	4
 %if %prever
 %define release	%mkrel 0.%prever.%rel
 %else
@@ -23,7 +23,7 @@ Source:		http://www.muempf.de/down/vdr-%plugin-%version%prever.tar.gz
 Source:		http://www.muempf.de/down/vdr-%plugin-%version.tar.gz
 %endif
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	vdr-devel >= 1.4.1-6
+BuildRequires:	vdr-devel >= 1.6.0
 BuildRequires:	libmad-devel libid3tag-devel libsndfile-devel libvorbis-devel
 Requires:	vdr-abi = %vdr_abi
 
@@ -47,9 +47,7 @@ files.
 %setup -q -n %plugin-%version
 %endif
 chmod +x examples/*.sh.*
-
-# disable VDR1.5 i18n generation, detection fails without vdr source
-perl -pi -e 's,ALL \+= i18n.*$,,' Makefile
+%vdr_plugin_prep
 
 %vdr_plugin_params_begin mp3
 # use CMD to mount/unmount/eject mp3 sources
