@@ -22,6 +22,7 @@ Source:		http://www.muempf.de/down/vdr-%plugin-%version%prever.tar.gz
 %else
 Source:		http://www.muempf.de/down/vdr-%plugin-%version.tar.gz
 %endif
+Patch0:		mp3-const-char-gcc4.4.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 BuildRequires:	libmad-devel libid3tag-devel libsndfile-devel libvorbis-devel
@@ -46,6 +47,7 @@ files.
 %else
 %setup -q -n %plugin-%version
 %endif
+%patch0 -p1
 chmod +x examples/*.sh.*
 %vdr_plugin_prep
 
