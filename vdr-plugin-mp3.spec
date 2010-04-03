@@ -1,9 +1,9 @@
 
 %define plugin	mp3
 %define name	vdr-plugin-%plugin
-%define version	0.10.1
+%define version	0.10.2
 %define prever	0
-%define rel	7
+%define rel	1
 %if %prever
 %define release	%mkrel 0.%prever.%rel
 %else
@@ -15,14 +15,13 @@ Name:		%name
 Version:	%version
 Release:	%release
 Group:		Video
-License:	GPL
+License:	GPLv2+
 URL:		http://www.muempf.de/
 %if %prever
 Source:		http://www.muempf.de/down/vdr-%plugin-%version%prever.tar.gz
 %else
 Source:		http://www.muempf.de/down/vdr-%plugin-%version.tar.gz
 %endif
-Patch0:		mp3-const-char-gcc4.4.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 BuildRequires:	libmad-devel libid3tag-devel libsndfile-devel libvorbis-devel
@@ -47,7 +46,6 @@ files.
 %else
 %setup -q -n %plugin-%version
 %endif
-%patch0 -p1
 chmod +x examples/*.sh.*
 %vdr_plugin_prep
 
@@ -72,6 +70,9 @@ param=--dsp=OSS_DEV
 # use CMD to convert background images
 var=IMAGE_CMD
 param=--iconv=IMAGE_CMD
+# use IMG as default background image
+var=IMAGE_IMG
+param=--defimage=IMAGE_IMG
 # cache converted images in DIR
 var=IMAGE_DIR
 param=--icache=IMAGE_DIR
