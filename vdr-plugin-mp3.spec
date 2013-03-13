@@ -1,9 +1,6 @@
-
 %define plugin	mp3
-%define name	vdr-plugin-%plugin
-%define version	0.10.2
 %define prever	0
-%define rel	2
+%define rel	3
 %if %prever
 %define release	%mkrel 0.%prever.%rel
 %else
@@ -11,8 +8,8 @@
 %endif
 
 Summary:	VDR plugin: A versatile audio player
-Name:		%name
-Version:	%version
+Name:		vdr-plugin-%plugin
+Version:	0.10.2
 Release:	%release
 Group:		Video
 License:	GPLv2+
@@ -100,7 +97,6 @@ param=--resume=RESUME_DIR
 %vdr_plugin_build
 
 %install
-rm -rf %{buildroot}
 %vdr_plugin_install
 
 install -d -m755 %buildroot%vdr_plugin_cfgdir
@@ -115,18 +111,6 @@ install -d -m755 %buildroot%vdr_plugin_cachedir/mp3/images
 install -d -m755 %buildroot%vdr_plugin_cachedir/mp3/id3
 install -d -m755 %buildroot%vdr_plugin_cachedir/mp3/cddb
 
-%post
-%vdr_plugin_post mp3
-
-%postun
-%vdr_plugin_postun mp3
-
-%post -n vdr-plugin-mplayer
-%vdr_plugin_post mplayer
-
-%postun -n vdr-plugin-mplayer
-%vdr_plugin_postun mplayer
-
 %files -f mp3.vdr
 %defattr(-,root,root)
 %doc README COPYING HISTORY MANUAL examples
@@ -140,8 +124,6 @@ install -d -m755 %buildroot%vdr_plugin_cachedir/mp3/cddb
 %defattr(-,root,root)
 %doc README COPYING HISTORY MANUAL examples
 %config(noreplace) %vdr_plugin_cfgdir/mplayersources.conf
-
-
 
 
 %changelog
