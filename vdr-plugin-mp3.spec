@@ -4,7 +4,7 @@
 Summary:	VDR plugin: A versatile audio player
 Name:		vdr-plugin-%plugin
 Version:	0.10.2
-Release:	5
+Release:	6
 Group:		Video
 License:	GPLv2+
 URL:		http://www.muempf.de/
