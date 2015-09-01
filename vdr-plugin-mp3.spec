@@ -4,7 +4,7 @@
 Summary:	VDR plugin: A versatile audio player
 Name:		vdr-plugin-%plugin
 Version:	0.10.2
-Release:	6
+Release:	5
 Group:		Video
 License:	GPLv2+
 URL:		http://www.muempf.de/
@@ -13,6 +13,7 @@ Source:		http://www.muempf.de/down/vdr-%plugin-%{version}%prever.tar.gz
 %else
 Source:		http://www.muempf.de/down/vdr-%plugin-%{version}.tar.gz
 %endif
+Patch0:		vdr-mp3-0.10.2-mga-vdrdir.patch
 BuildRequires:	vdr-devel >= 1.6.0
 BuildRequires:	libmad-devel libid3tag-devel sndfile-devel libvorbis-devel
 Requires:	vdr-abi = %vdr_abi
@@ -37,6 +38,7 @@ files.
 %setup -q -n %plugin-%{version}
 %endif
 chmod +x examples/*.sh.*
+%apply_patches
 %vdr_plugin_prep
 
 %vdr_plugin_params_begin mp3
