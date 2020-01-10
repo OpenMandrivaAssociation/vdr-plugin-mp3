@@ -38,7 +38,7 @@ files.
 %setup -q -n %plugin-%{version}
 %endif
 chmod +x examples/*.sh.*
-%apply_patches
+%autopatch -p1
 %vdr_plugin_prep
 
 %vdr_plugin_params_begin mp3
