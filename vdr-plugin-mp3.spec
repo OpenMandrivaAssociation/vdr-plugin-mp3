@@ -7,7 +7,7 @@ Version:	0.10.2
 Release:	5
 Group:		Video
 License:	GPLv2+
-URL:		http://www.muempf.de/
+URL:		https://www.muempf.de/
 %if %prever
 Source:		http://www.muempf.de/down/vdr-%plugin-%{version}%prever.tar.gz
 %else
